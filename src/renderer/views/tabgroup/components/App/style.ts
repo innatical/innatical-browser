@@ -41,7 +41,7 @@ export const Color = styled.div`
   position: relative;
   overflow: hidden;
 
-  ${({ color }: { color: string }) => css`
+  ${({ color }) => css`
     background-color: ${color};
   `}
 

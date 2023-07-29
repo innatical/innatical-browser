@@ -33,9 +33,13 @@ export const Buttons = styled.div`
   float: right;
 `;
 
+type InputProps = {
+  theme?: ITheme
+}
+
 export const Input = styled.input.attrs(() => ({
   spellCheck: false,
-}))`
+}))<InputProps>`
   outline: none;
   border: none;
   width: 100%;
@@ -48,7 +52,7 @@ export const Input = styled.input.attrs(() => ({
   background-color: transparent;
   color: inherit;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     &::placeholder {
       color: ${theme['searchBox.lightForeground']
         ? 'rgba(255, 255, 255, 0.54)'

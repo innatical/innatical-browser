@@ -31,7 +31,11 @@ export const Input = styled.input.attrs(() => ({
   ${Control};
 `;
 
-export const Dropdown = styled.div`
+type DropdownProps = {
+  dark: boolean;
+};
+
+export const Dropdown = styled.div<DropdownProps>`
   ${Control}
 
   &:after {
@@ -42,7 +46,7 @@ export const Dropdown = styled.div`
     width: 20px;
     ${centerIcon()};
 
-    ${({ dark }: { dark: boolean }) => css`
+    ${({ dark }) => css`
       filter: ${dark ? 'invert(100%)' : 'none'};
     `}
   }

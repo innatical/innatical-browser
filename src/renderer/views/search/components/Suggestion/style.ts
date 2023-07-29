@@ -3,7 +3,13 @@ import { transparency, BLUE_300, BLUE_500 } from '~/renderer/constants';
 import { ITheme } from '~/interfaces';
 import { body2, centerIcon } from '~/renderer/mixins';
 
-export const StyledSuggestion = styled.div`
+type StyledSuggestionProps = {
+  selected: boolean;
+  hovered: boolean;
+  theme?: ITheme;
+}
+
+export const StyledSuggestion = styled.div<StyledSuggestionProps>`
   width: 100%;
   height: 38px;
   min-height: 38px;
@@ -15,10 +21,6 @@ export const StyledSuggestion = styled.div`
     selected,
     hovered,
     theme,
-  }: {
-    selected: boolean;
-    hovered: boolean;
-    theme?: ITheme;
   }) => {
     let backgroundColor = 'transparent';
     if (selected) {
@@ -52,8 +54,12 @@ export const RightText = styled(SuggestionText)`
   flex: 1;
 `;
 
-export const Url = styled(RightText)`
-  ${({ theme }: { theme?: ITheme }) => css`
+type UrlProps = {
+  theme?: ITheme;
+}
+
+export const Url = styled(RightText)<UrlProps>`
+  ${({ theme }) => css`
     color: ${theme['searchBox.lightForeground'] ? BLUE_300 : '#3297FD'};
   `}
 `;

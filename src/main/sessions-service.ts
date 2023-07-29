@@ -10,11 +10,9 @@ import { parseCrx } from '~/utils/crx';
 import { pathExists } from '~/utils/files';
 import { extractZip } from '~/utils/zip';
 import { requestPermission } from './dialogs/permissions';
-import * as rimraf from 'rimraf';
-import { promisify } from 'util';
+import { rimraf } from 'rimraf';
 import { ElectronChromeExtensions } from 'electron-chrome-extensions';
 
-const rf = promisify(rimraf);
 
 // TODO: sessions should be separate.  This structure actually doesn't make sense.
 export class SessionsService {
@@ -337,7 +335,7 @@ export class SessionsService {
 
     await this.view.removeExtension(id);
 
-    await rf(extension.path);
+    await rimraf(extension.path);
   }
 
   public onCreateTab = async (details: chrome.tabs.CreateProperties) => {

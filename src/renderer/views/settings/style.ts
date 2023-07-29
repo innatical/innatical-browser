@@ -13,7 +13,7 @@ export const Style = css`
     height: 100vh;
     overflow: hidden;
     ${body2()}
-    ${({ theme }: { theme?: ITheme }) => css`
+    ${({ theme }) => css`
       background-color: ${theme['pages.backgroundColor']};
       color: ${theme['pages.textColor']};
     `};

@@ -27,14 +27,19 @@ export const Header = styled.div`
   cursor: pointer;
 `;
 
-export const Icon = styled.div`
+type IconProps = {
+  icon: string;
+  theme?: ITheme;
+}
+
+export const Icon = styled.div<IconProps>`
   width: 18px;
   height: 18px;
   opacity: ${transparency.icons.inactive};
   margin-left: 16px;
   ${centerIcon('contain')};
 
-  ${({ icon, theme }: { icon: string; theme?: ITheme }) => css`
+  ${({ icon, theme }) => css`
     background-image: url(${icon});
     filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
   `};

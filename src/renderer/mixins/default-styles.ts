@@ -26,13 +26,17 @@ export const UIStyle = createGlobalStyle`
   }
 `;
 
-export const WebUIStyle = createGlobalStyle`
+type WebUIStyleProps = {
+  theme?: ITheme
+}
+
+export const WebUIStyle = createGlobalStyle<WebUIStyleProps>`
   ${baseStyle};
   
   body {
     overflow-y: auto;
     ${body2()};
-    ${({ theme }: { theme?: ITheme }) => css`
+    ${({ theme }) => css`
       background-color: ${theme['pages.backgroundColor']};
       color: ${theme['pages.textColor']};
     `};

@@ -25,7 +25,11 @@ export const More = styled.div<MoreProps>`
   }
 `;
 
-export const Favicon = styled.div`
+type FaviconProps = {
+  theme?: ITheme;
+}
+
+export const Favicon = styled.div<FaviconProps>`
   ${centerIcon()};
   height: 16px;
   display: flex;
@@ -33,7 +37,7 @@ export const Favicon = styled.div`
   align-items: center;
   width: 16px;
   margin-right: 24px;
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : ''};
   `}
 `;

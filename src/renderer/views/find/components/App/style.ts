@@ -8,14 +8,18 @@ import {
   DIALOG_BORDER_RADIUS,
 } from '~/renderer/mixins/dialogs';
 
-export const StyledApp = styled.div`
+type StyledAppProps = {
+  theme?: ITheme;
+};
+
+export const StyledApp = styled.div<StyledAppProps>`
   margin: 16px;
   margin-top: 3px;
   box-shadow: ${DIALOG_BOX_SHADOW};
   border-radius: ${DIALOG_BORDER_RADIUS}px;
   background: white;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
     color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}
@@ -30,7 +34,11 @@ export const StyledFind = styled.div`
   display: flex;
 `;
 
-export const SearchIcon = styled.div`
+type SearchIconProps = {
+  theme?: ITheme
+}
+
+export const SearchIcon = styled.div<SearchIconProps>`
   min-width: 16px;
   height: 16px;
   ${centerIcon()};
@@ -39,7 +47,7 @@ export const SearchIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}
 `;
@@ -56,8 +64,13 @@ export const Input = styled.input`
   color: inherit;
 `;
 
-export const Button = styled.div`
-  ${({ size, theme }: { size: number; theme?: ITheme }) => css`
+type ButtonProps = {
+  size: number;
+  theme?: ITheme;
+};
+
+export const Button = styled.div<ButtonProps>`
+  ${({ size, theme }) => css`
     ${centerIcon(size)};
     color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}

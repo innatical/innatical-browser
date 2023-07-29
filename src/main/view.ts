@@ -73,7 +73,6 @@ export class View {
         sandbox: true,
         partition: incognito ? 'view_incognito' : 'persist:view',
         plugins: true,
-        nativeWindowOpen: true,
         webSecurity: true,
         javascript: true,
       },
@@ -196,7 +195,9 @@ export class View {
     );
 
     this.webContents.addListener(
+      // @ts-ignore
       'new-window',
+      // @ts-ignore
       async (e, url, frameName, disposition) => {
         if (disposition === 'new-window') {
           if (frameName === '_self') {

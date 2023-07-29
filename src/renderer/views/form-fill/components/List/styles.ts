@@ -11,7 +11,11 @@ export const StyledList = styled.div`
   ${noButtons()};
 `;
 
-export const StyledItem = styled.div`
+type StyledItemProps = {
+  subtext: boolean;
+};
+
+export const StyledItem = styled.div<StyledItemProps>`
   width: 100%;
   display: flex;
   flex-direction: column;

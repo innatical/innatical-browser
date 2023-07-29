@@ -8,14 +8,17 @@ export const DIALOG_BOX_SHADOW =
 
 export const DIALOG_BORDER_RADIUS = '8';
 
-export const DialogBaseStyle = styled.div`
+type DialogBaseStyleProps = {
+  theme?: ITheme
+}
+export const DialogBaseStyle = styled.div<DialogBaseStyleProps>`
   margin: 16px;
   margin-top: 10px;
   box-shadow: ${DIALOG_BOX_SHADOW};
   border-radius: ${DIALOG_BORDER_RADIUS}px;
   overflow: hidden;
   position: relative;
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
   `}
 `;
@@ -33,13 +36,15 @@ export const DialogStyle = styled(DialogBaseStyle)`
   animation: 0.15s ease-out 0s 1 fadeIn;
 `;
 
-export const PersistentDialogStyle = styled(DialogBaseStyle)`
+type PersistentDialogStyleProps = {
+    visible: boolean;
+    hideTransition?: boolean;
+}
+
+export const PersistentDialogStyle = styled(DialogBaseStyle)<PersistentDialogStyleProps>`
   ${({
     visible,
     hideTransition,
-  }: {
-    visible: boolean;
-    hideTransition?: boolean;
   }) => css`
     transition: ${!visible && !hideTransition ? 'none' : DIALOG_TRANSITION};
     opacity: ${visible ? 1 : 0};

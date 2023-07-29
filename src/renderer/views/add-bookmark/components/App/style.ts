@@ -73,6 +73,7 @@ export const Select = styled.select<{
   padding: 0.3rem;
   align-items: center;
   -webkit-appearance: none;
+  appearance: none;
   ${({ theme }) => css`
     background-color: ${theme['control.backgroundColor']};
 

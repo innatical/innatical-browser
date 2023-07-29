@@ -4,11 +4,12 @@ import { centerIcon } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { transparency } from '~/renderer/constants';
 
-interface NavigationDrawerItemProps {
+type NavigationDrawerItemProps = {
   theme?: ITheme;
   global?: boolean;
   selected?: boolean;
 }
+
 export const StyledNavigationDrawerItem = styled.div<NavigationDrawerItemProps>`
   display: flex;
   height: 40px;
@@ -32,7 +33,7 @@ export const StyledNavigationDrawerItem = styled.div<NavigationDrawerItemProps>`
     }}
 
     ${global && {
-      fontSize: 18,
+      fontSize: '18px',
     }}
     padding-left: ${global ? '0' : '10px'};
     padding-right: ${global ? '0' : '10px'};

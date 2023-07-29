@@ -18,7 +18,11 @@ export const CloseButton = () => {
   );
 };
 
-export const Dialog = styled.div`
+type DialogProps = {
+  visible: boolean;
+}
+
+export const Dialog = styled.div<DialogProps>`
   width: 100%;
   max-width: 512px;
   height: fit-content;
@@ -29,7 +33,7 @@ export const Dialog = styled.div`
   transition: 0.15s transform ${EASING_FUNCTION};
   ${interRegular()};
 
-  ${({ visible }: { visible: boolean }) => css`
+  ${({ visible }) => css`
     pointer-events: ${visible ? 'inherit' : 'none'};
     opacity: ${visible ? 1 : 0};
     transform: ${visible ? 'translate3d(0, 0, 0)' : 'translate3d(0, -24px, 0)'};

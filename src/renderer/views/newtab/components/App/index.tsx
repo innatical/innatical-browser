@@ -9,7 +9,7 @@ import { WebUIStyle } from '~/renderer/mixins/default-styles';
 
 import { useQuery } from 'react-query';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import FastAverageColor from 'fast-average-color';
+import {FastAverageColor} from 'fast-average-color';
 import { useAsync } from 'react-use';
 import { Helmet } from 'react-helmet';
 
@@ -55,9 +55,11 @@ export default observer(() => {
     return (await fac.getColorAsync(store.settings.tab.image)).hex;
   }, [store.settings.tab.image]);
   return (
+    // @ts-ignore
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={{ ...store.theme }}>
         <div>
+          {/* @ts-ignore */}
           <Helmet>
             <meta name="theme-color" content={theme.value} />
           </Helmet>

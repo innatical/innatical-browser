@@ -1,9 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export const StyledSuggestions = styled.div`
+type StyledSuggestionsProps = {
+  visible: boolean;
+};
+export const StyledSuggestions = styled.div<StyledSuggestionsProps>`
   width: 100%;
   overflow: hidden;
-  ${({ visible }: { visible: boolean }) => css`
+  ${({ visible }) => css`
     display: ${visible ? 'block' : 'none'};
   `};
 `;

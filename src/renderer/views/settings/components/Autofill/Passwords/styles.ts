@@ -31,19 +31,25 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Icon = styled.div`
+
+type IconProps = {
+  icon: string;
+}
+
+export const Icon = styled.div<IconProps>`
   width: 16px;
   height: 16px;
   ${centerIcon('contain')};
 
-  ${({ icon }: { icon: string }) => css`
+  ${({ icon }) => css`
     background-image: url(${icon});
   `};
 `;
 
-interface PasswordIconProps {
+type PasswordIconProps = {
   theme: ITheme;
 }
+
 export const PasswordIcon = styled.div<PasswordIconProps>`
   width: 20px;
   height: 20px;

@@ -55,7 +55,11 @@ export const StyledCheckbox = styled.div<CheckboxProps>`
   }
 `;
 
-export const Icon = styled.div`
+type IconProps = {
+  toggled: boolean
+}
+
+export const Icon = styled.div<IconProps>`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -66,7 +70,7 @@ export const Icon = styled.div`
   filter: invert(100%);
   ${centerIcon(22)};
 
-  ${({ toggled }: { toggled: boolean }) => css`
+  ${({ toggled }) => css`
     clip-path: ${toggled ? 'inset(0 0 0 0)' : 'inset(100% 50% 0 50%)'};
   `};
 `;

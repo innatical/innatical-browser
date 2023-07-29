@@ -3,18 +3,27 @@ import { ITheme } from '~/interfaces';
 import { centerIcon } from '~/renderer/mixins';
 import { ICON_ARROW_RIGHT } from '~/renderer/constants/icons';
 
-export const Line = styled.div`
+type LineProps = {
+  theme?: ITheme;
+}
+export const Line = styled.div<LineProps>`
   height: 1px;
   width: 100%;
   margin-top: 4px;
   margin-bottom: 4px;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.separator.color']};
   `};
 `;
 
-export const MenuItem = styled.div`
+type MenuItemProps = {
+  arrow?: boolean;
+  disabled?: boolean;
+  theme?: ITheme;
+}
+
+export const MenuItem = styled.div<MenuItemProps>`
   height: 36px;
   align-items: center;
   display: flex;
@@ -23,7 +32,7 @@ export const MenuItem = styled.div`
   font-size: 12px;
   border-radius: 4px;
 
-  ${({ arrow }: { arrow?: boolean; disabled?: boolean }) =>
+  ${({ arrow }) =>
     arrow &&
     css`
       &:after {
@@ -34,7 +43,7 @@ export const MenuItem = styled.div`
         height: 100%;
         opacity: 0.54;
         ${centerIcon(20)};
-        ${({ theme }: { theme?: ITheme }) => css`
+        ${({ theme }) => css`
           filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
         `};
       }
@@ -59,11 +68,14 @@ export const MenuItemTitle = styled.div`
   flex: 1;
 `;
 
-export const MenuItems = styled.div`
+type MenuItemsProps = {
+  theme?: ITheme
+}
+export const MenuItems = styled.div<MenuItemsProps>`
   flex: 1;
   overflow: hidden;
   padding: 10px;
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
     color: ${theme['dialog.textColor']};
   `};
@@ -75,7 +87,10 @@ export const Content = styled.div`
   position: relative;
 `;
 
-export const Icon = styled.div`
+type IconProps = {
+  theme?: ITheme;
+}
+export const Icon = styled.div<IconProps>`
   margin-right: 12px;
   width: 20px;
   height: 20px;
@@ -87,7 +102,7 @@ export const Icon = styled.div`
   justify-content: center;
   font-size: 15px;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
   `};
 `;
 

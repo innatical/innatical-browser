@@ -20,10 +20,14 @@ export const ItemBase = styled.div`
   height: 90px;
 `;
 
-export const Placeholder = styled(ItemBase)`
+type PlaceholderProps = {
+  theme?: ITheme;
+};
+
+export const Placeholder = styled(ItemBase)<PlaceholderProps>`
   box-sizing: border-box;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     border: 2px dashed
       ${!theme['pages.lightForeground']
         ? 'rgba(0, 0, 0, 0.2)'

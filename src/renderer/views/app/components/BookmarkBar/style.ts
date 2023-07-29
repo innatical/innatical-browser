@@ -70,8 +70,11 @@ export const BookmarkSection = styled.div`
   overflow: hidden;
 `;
 
-export const BookmarkButton = styled(Button)`
-  max-width: ${({ width }: { width: number }) => width}px;
+type BookmarkButtonProps = {
+  width: number;
+};
+export const BookmarkButton = styled(Button)<BookmarkButtonProps>`
+  max-width: ${({ width }) => width}px;
   width: auto;
   padding: 4px;
   margin: 0 2px;

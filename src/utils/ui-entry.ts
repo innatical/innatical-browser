@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import * as React from 'react';
 
 import { configureUI } from '~/common/renderer-config';
@@ -8,8 +8,11 @@ export const renderUI = (Component: any) => {
   ipcRenderer.setMaxListeners(0);
   configureUI();
 
-  ReactDOM.render(
-    React.createElement(Component),
-    document.getElementById('app'),
-  );
+  
+  const container = document.getElementById('app');
+
+// convert to react 18
+  let root = ReactDOM.createRoot(container);
+  
+  root.render(React.createElement(Component));
 };

@@ -5,7 +5,11 @@ import {
   DIALOG_BORDER_RADIUS,
 } from '~/renderer/mixins/dialogs';
 
-export const StyledApp = styled.div`
+type StyledAppProps = {
+  theme?: ITheme;
+};
+
+export const StyledApp = styled.div<StyledAppProps>`
   margin: 16px;
   padding: 16px;
   box-shadow: ${DIALOG_BOX_SHADOW};
@@ -13,7 +17,7 @@ export const StyledApp = styled.div`
   overflow: hidden;
   position: relative;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
     color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}

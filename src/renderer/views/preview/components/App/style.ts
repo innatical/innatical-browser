@@ -4,13 +4,18 @@ import { maxLines } from '~/renderer/mixins';
 import { TAB_MAX_WIDTH } from '~/renderer/views/app/constants/tabs';
 import { PersistentDialogStyle } from '~/renderer/mixins/dialogs';
 
-export const StyledApp = styled(PersistentDialogStyle)`
+type StyledAppProps = {
+  theme?: ITheme;
+  xTransition: boolean;
+};
+
+export const StyledApp = styled(PersistentDialogStyle)<StyledAppProps>`
   margin: 0;
   padding: 12px;
   font-size: 13px;
   max-width: ${TAB_MAX_WIDTH}px;
 
-  ${({ theme, xTransition }: { theme?: ITheme; xTransition: boolean }) => css`
+  ${({ theme, xTransition }) => css`
     color: ${theme['dialog.textColor']};
     transition: 0.15s opacity ${xTransition ? ', 0.08s transform' : ''};
   `}

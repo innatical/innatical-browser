@@ -3,7 +3,11 @@ import { BLUE_500, ICON_PAGE, ICON_MORE } from '~/renderer/constants';
 import { centerIcon } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 
-export const StyledDownloadItem = styled.div`
+type DownloadItemProps = {
+  theme?: ITheme;
+}
+
+export const StyledDownloadItem = styled.div<DownloadItemProps>`
   height: 64px;
   background-color: rgba(255, 255, 255, 0.04);
   border-radius: 8px;
@@ -14,7 +18,7 @@ export const StyledDownloadItem = styled.div`
   margin-top: 8px;
   transition: 0.1s background-color, 0.1s border;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.lightForeground']
       ? `rgba(255, 255, 255, 0.04)`
       : `rgba(0, 0, 0, 0.02)`};
@@ -48,7 +52,10 @@ export const Progress = styled.div`
   border-radius: 16px;
 `;
 
-export const ProgressBackground = styled.div`
+type ProgressBackgroundProps = {
+  theme?: ITheme;
+}
+export const ProgressBackground = styled.div<ProgressBackgroundProps>`
   height: 5px;
   background-color: rgba(255, 255, 255, 0.12);
   border-radius: 16px;
@@ -56,7 +63,7 @@ export const ProgressBackground = styled.div`
   margin-top: 4px;
   flex: 1;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.lightForeground']
       ? `rgba(255, 255, 255, 0.12)`
       : `rgba(0, 0, 0, 0.12)`};
@@ -73,7 +80,11 @@ export const Info = styled.div`
   white-space: nowrap;
 `;
 
-export const Icon = styled.div`
+type IconProps = {
+  theme?: ITheme
+}
+
+export const Icon = styled.div<IconProps>`
   width: 24px;
   height: 24px;
   ${centerIcon()};
@@ -83,12 +94,16 @@ export const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     filter: ${theme['dialog.lightForeground'] ? 'invert(0%)' : ''};
   `}
 `;
 
-export const MoreButton = styled.div`
+type MoreButtonProps = {
+  theme?: ITheme;
+}
+
+export const MoreButton = styled.div<MoreButtonProps>`
   width: 36px;
   height: 36px;
   ${centerIcon(20)};
@@ -100,7 +115,7 @@ export const MoreButton = styled.div`
   border-radius: 6px;
   transition: 0.1s background-color;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     filter: ${theme['dialog.lightForeground'] ? 'invert(0%)' : ''};
   `}
 
@@ -109,14 +124,18 @@ export const MoreButton = styled.div`
   }
 `;
 
-export const Separator = styled.div`
+type SeperatorProps = {
+  theme?: ITheme;
+}
+
+export const Separator = styled.div<SeperatorProps>`
   height: 48px;
   width: 1px;
   margin-left: 16px;
   margin-right: 8px;
   background-color: rgba(0, 0, 0, 0.12);
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['dialog.lightForeground']
       ? 'rgba(255, 255, 255, 0.12)'
       : 'rgba(0, 0, 0, 0.12)'};

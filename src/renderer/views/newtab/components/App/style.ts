@@ -5,7 +5,11 @@ import { ContextMenuRow } from '~/renderer/components/ContextMenu';
 import { ITheme } from '~/interfaces';
 import { contrast } from '~/utils/colors';
 
-export const Image = styled.div`
+type ImageProps = {
+  src?: string;
+};
+
+export const Image = styled.div<ImageProps>`
   position: absolute;
   z-index: 1;
   background-size: cover;
@@ -17,7 +21,7 @@ export const Image = styled.div`
   bottom: 0;
   transition: 0.3s opacity, 1s transform;
 
-  ${({ src }: { src?: string }) => css`
+  ${({ src }) => css`
     opacity: ${src === '' ? 0 : 1};
     transform: ${src === '' ? 'scale(1.05)' : 'scale(1)'};
     background-image: url(${src});
@@ -145,7 +149,11 @@ export const StyledSearchBar = styled.input<{
   `}
 `;
 
-export const IconItem = styled.div`
+type IconItemProps = {
+  theme?: ITheme;
+}
+
+export const IconItem = styled.div<IconItemProps>`
   width: 34px;
   height: 34px;
   margin-left: 16px;
@@ -161,7 +169,7 @@ export const IconItem = styled.div`
     margin-top: 0;
   }
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     &:hover {
       opacity: 1;
       background-color: rgba(255, 255, 255, 0.1);

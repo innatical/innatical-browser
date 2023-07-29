@@ -12,7 +12,7 @@ import {
   SecondaryText,
 } from './style';
 import { IDownloadItem } from '~/interfaces';
-import prettyBytes = require('pretty-bytes');
+import prettyBytes from 'pretty-bytes';
 import { shell } from 'electron';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ICON_MORE, ICON_PAGE } from '~/renderer/constants/icons';

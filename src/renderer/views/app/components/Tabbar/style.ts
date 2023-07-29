@@ -62,13 +62,17 @@ export const TabsContainer = styled.div`
   }
 `;
 
-export const AddTab = styled(ToolbarButton)`
+type AddTabProps = {
+  theme: ITheme;
+};
+
+export const AddTab = styled(ToolbarButton)<AddTabProps>`
   position: absolute;
   left: 0;
   min-width: ${ADD_TAB_BUTTON_WIDTH}px;
   height: ${ADD_TAB_BUTTON_HEIGHT}px;
 
-  ${({ theme }: { theme: ITheme }) => css`
+  ${({ theme }) => css`
     top: ${theme.isCompact ? 'auto' : theme.tabMarginTop + 2}px;
   `};
 `;

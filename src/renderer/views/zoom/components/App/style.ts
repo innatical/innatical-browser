@@ -3,10 +3,15 @@ import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 import { DialogStyle } from '~/renderer/mixins/dialogs';
 
-export const StyledApp = styled(DialogStyle)`
+type StyledAppProps = {
+  theme?: ITheme;
+  visible: boolean;
+};
+
+export const StyledApp = styled(DialogStyle)<StyledAppProps>`
   padding: 16px;
 
-  ${({ theme }: { theme?: ITheme; visible: boolean }) => css`
+  ${({ theme }) => css`
     color: ${theme['dialog.lightForeground'] ? '#fff' : '#000'};
   `}
 `;
